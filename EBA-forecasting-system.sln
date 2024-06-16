@@ -1,0 +1,48 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35004.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EBA-forecasting-system.AppHost", "EBA-forecasting-system.AppHost\EBA-forecasting-system.AppHost.csproj", "{21648A4C-C614-49AD-BBD4-5D02F1E57C87}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EBA-forecasting-system.ServiceDefaults", "EBA-forecasting-system.ServiceDefaults\EBA-forecasting-system.ServiceDefaults.csproj", "{4470BA11-DE0A-4187-B03E-94561E90CC12}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EBA-forecasting-system.ApiService", "EBA-forecasting-system.ApiService\EBA-forecasting-system.ApiService.csproj", "{D968CFDB-FDAA-4CEE-8471-C4DB0D4D4B04}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EBA-forecasting-system.Web", "EBA-forecasting-system.Web\EBA-forecasting-system.Web.csproj", "{760C0899-8388-4F94-93F0-9F93ECEEA95D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EBA-forecasting-system.Tests", "EBA-forecasting-system.Tests\EBA-forecasting-system.Tests.csproj", "{D041C325-3A68-4A30-97D2-7ECBB9310E92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21648A4C-C614-49AD-BBD4-5D02F1E57C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21648A4C-C614-49AD-BBD4-5D02F1E57C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21648A4C-C614-49AD-BBD4-5D02F1E57C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21648A4C-C614-49AD-BBD4-5D02F1E57C87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4470BA11-DE0A-4187-B03E-94561E90CC12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4470BA11-DE0A-4187-B03E-94561E90CC12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4470BA11-DE0A-4187-B03E-94561E90CC12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4470BA11-DE0A-4187-B03E-94561E90CC12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D968CFDB-FDAA-4CEE-8471-C4DB0D4D4B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D968CFDB-FDAA-4CEE-8471-C4DB0D4D4B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D968CFDB-FDAA-4CEE-8471-C4DB0D4D4B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D968CFDB-FDAA-4CEE-8471-C4DB0D4D4B04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{760C0899-8388-4F94-93F0-9F93ECEEA95D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{760C0899-8388-4F94-93F0-9F93ECEEA95D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{760C0899-8388-4F94-93F0-9F93ECEEA95D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{760C0899-8388-4F94-93F0-9F93ECEEA95D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D041C325-3A68-4A30-97D2-7ECBB9310E92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D041C325-3A68-4A30-97D2-7ECBB9310E92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D041C325-3A68-4A30-97D2-7ECBB9310E92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D041C325-3A68-4A30-97D2-7ECBB9310E92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4634C89-B120-4F50-AB35-18E8612894AB}
+	EndGlobalSection
+EndGlobal
