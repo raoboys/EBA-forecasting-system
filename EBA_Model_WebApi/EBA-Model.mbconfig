@@ -1,0 +1,309 @@
+﻿{
+  "Scenario": "Forecasting",
+  "DataSource": {
+    "Type": "SQL",
+    "Version": 1,
+    "ColumnProperties": [
+      {
+        "ColumnName": "PredictionID",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "HospitalID",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "PredictionDate",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "DateTime",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "PredictedAvailableBeds",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "PredictedOccupiedBeds",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "BedID",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "BedNumber",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "BedType",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "BedStatus",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "HospitalName",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "HospitalLocation",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "PatientID",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Age",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Gender",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "AdmissionDate",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "DateTime",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "AdmissionStatus",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "DischargeDate",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "DateTime",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "CaseID",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "EmergencyType",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "EmergencyAdmissionTime",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "DateTime",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      }
+    ],
+    "ConnectionString": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EBA.Forecasting.DB;Integrated Security=True",
+    "CommandString": "SELECT CAST([PredictionID] as REAL), CAST([HospitalID] as REAL), [PredictionDate], CAST([PredictedAvailableBeds] as REAL), CAST([PredictedOccupiedBeds] as REAL), CAST([BedID] as REAL), CAST([BedNumber] as REAL), CAST([BedType] as NVARCHAR(MAX)), CAST([BedStatus] as NVARCHAR(MAX)), CAST([HospitalName] as NVARCHAR(MAX)), CAST([HospitalLocation] as NVARCHAR(MAX)), CAST([PatientID] as REAL), CAST([Age] as REAL), CAST([Gender] as NVARCHAR(MAX)), [AdmissionDate], CAST([AdmissionStatus] as NVARCHAR(MAX)), [DischargeDate], CAST([CaseID] as REAL), CAST([EmergencyType] as NVARCHAR(MAX)), [EmergencyAdmissionTime] FROM [dbo].[EnhancedPredictionData]",
+    "DatabaseName": "EBA.Forecasting.DB",
+    "SelectedTableDbo": "dbo",
+    "TableName": "EnhancedPredictionData"
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 1.3436072034346553,
+        "RuntimeInSeconds": 0.186,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 2,
+            "SeriesLength": 10,
+            "TrainSize": 40,
+            "Horizon": 10,
+            "OutputColumnName": "PredictedAvailableBeds",
+            "InputColumnName": "PredictedAvailableBeds",
+            "ConfidenceLowerBoundColumn": "PredictedAvailableBeds_LB",
+            "ConfidenceUpperBoundColumn": "PredictedAvailableBeds_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 1.3436072034346553,
+        "RuntimeInSeconds": 0.005,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 2,
+            "SeriesLength": 234,
+            "TrainSize": 40,
+            "Horizon": 10,
+            "OutputColumnName": "PredictedAvailableBeds",
+            "InputColumnName": "PredictedAvailableBeds",
+            "ConfidenceLowerBoundColumn": "PredictedAvailableBeds_LB",
+            "ConfidenceUpperBoundColumn": "PredictedAvailableBeds_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 1.3436072034346553,
+        "RuntimeInSeconds": 0.003,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 2,
+            "SeriesLength": 1384,
+            "TrainSize": 40,
+            "Horizon": 10,
+            "OutputColumnName": "PredictedAvailableBeds",
+            "InputColumnName": "PredictedAvailableBeds",
+            "ConfidenceLowerBoundColumn": "PredictedAvailableBeds_LB",
+            "ConfidenceUpperBoundColumn": "PredictedAvailableBeds_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 1.3436072034346553,
+        "RuntimeInSeconds": 0.004,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 2,
+            "SeriesLength": 651,
+            "TrainSize": 40,
+            "Horizon": 10,
+            "OutputColumnName": "PredictedAvailableBeds",
+            "InputColumnName": "PredictedAvailableBeds",
+            "ConfidenceLowerBoundColumn": "PredictedAvailableBeds_LB",
+            "ConfidenceUpperBoundColumn": "PredictedAvailableBeds_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 1.3436072034346553,
+        "RuntimeInSeconds": 0.003,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 2,
+            "SeriesLength": 392,
+            "TrainSize": 40,
+            "Horizon": 10,
+            "OutputColumnName": "PredictedAvailableBeds",
+            "InputColumnName": "PredictedAvailableBeds",
+            "ConfidenceLowerBoundColumn": "PredictedAvailableBeds_LB",
+            "ConfidenceUpperBoundColumn": "PredictedAvailableBeds_UB"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "ForecastBySsa"
+    },
+    "Schema": "e0",
+    "MetricName": "RMSE",
+    "ModelFilePath": "D:\\ML-Application\\EBA-forecasting-system\\EBA.Forecasting.ApiService\\EBA-Model.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 5,
+  "TrainingOption": {
+    "Version": 3,
+    "OptimizeMetric": "RMSE",
+    "Subsampling": false,
+    "Tuner": "eci-cfo",
+    "Type": "ForecastingTrainingOption",
+    "TrainingTime": 60,
+    "UseCrossValidation": false,
+    "Horizon": 10,
+    "LabelColumn": "PredictedAvailableBeds",
+    "UseDefaultIndex": true,
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "CrossValidationValidationOption",
+      "NumberOfFolds": 5
+    }
+  }
+}

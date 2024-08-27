@@ -1,1 +1,1 @@
-# EBA-forecasting-system
+# EBA.Forecasting
