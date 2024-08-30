@@ -3,15 +3,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.ML;
 using Microsoft.ML.Data;
-using Microsoft.VisualBasic;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.ML.Transforms.TimeSeries;
 
 namespace EBA.Forecasting.ServiceDefaults.Services
 {
@@ -59,61 +51,151 @@ namespace EBA.Forecasting.ServiceDefaults.Services
         {
             if (data == null) {  throw new ArgumentNullException("data"); }
 
-            // Data processing pipeline
-            //var dataProcessPipeline = _context.Transforms.Concatenate("NumericFeatures",
-            //                    "HospitalID", "BedID", "BedNumber", "PatientID", "Age", "CaseID", "PredictedOccupiedBeds", "PredictionID")
-            //                .Append(_context.Transforms.Concatenate("CategoricalFeatures", "BedType", "BedStatus", "HospitalName", "HospitalLocation", "Gender", "AdmissionStatus", "EmergencyType"))
-            //                .Append(_context.Transforms.Categorical.OneHotEncoding("BedType"))
-            //                .Append(_context.Transforms.Categorical.OneHotEncoding("BedStatus"))
-            //                .Append(_context.Transforms.Categorical.OneHotEncoding("HospitalName"))
-            //                .Append(_context.Transforms.Categorical.OneHotEncoding("HospitalLocation"))
-            //                .Append(_context.Transforms.Categorical.OneHotEncoding("Gender"))
-            //                .Append(_context.Transforms.Categorical.OneHotEncoding("AdmissionStatus"))
-            //                .Append(_context.Transforms.Categorical.OneHotEncoding("EmergencyType"))
-            //                .Append(_context.Transforms.Concatenate("Features", "NumericFeatures", "CategoricalFeatures"))
-            //                .Append(_context.Transforms.NormalizeMinMax("Features"));
+            //int AnomalyDetected = _context.AnomalyDetection.DetectSeasonality(data, "Seasonality", seasonalityWindowSize: 12);
 
             // Data processing pipeline
-            var dataProcessPipeline = _context.Transforms.Concatenate("NumericFeatures",
-                    "HospitalID", "BedID", "BedNumber", "PatientID", "Age", "CaseID", "PredictedOccupiedBeds", "PredictionID")
-                //.Append(_context.Transforms.Conversion.MapValueToKey("BedType"))
-                //.Append(_context.Transforms.Conversion.MapValueToKey("BedStatus"))
-                //.Append(_context.Transforms.Conversion.MapValueToKey("HospitalName"))
-                //.Append(_context.Transforms.Conversion.MapValueToKey("HospitalLocation"))
-                //.Append(_context.Transforms.Conversion.MapValueToKey("Gender"))
-                //.Append(_context.Transforms.Conversion.MapValueToKey("AdmissionStatus"))
-                //.Append(_context.Transforms.Conversion.MapValueToKey("EmergencyType"))
-                //.Append(_context.Transforms.Concatenate("CategoricalFeatures", "BedType", "BedStatus", "HospitalName", "HospitalLocation", "Gender", "AdmissionStatus", "EmergencyType"))
-                .Append(_context.Transforms.Concatenate("Features", "NumericFeatures"))
-                .Append(_context.Transforms.NormalizeMinMax("Features"));
+            var dataProcessPipeline = _context.Transforms.DetectAnomalyBySrCnn("Anomaly", "PredictedOccupiedBeds", threshold: 0.3)
+                //.Append(_context.Transforms.DetectTrend("Trend", "Value", trendWindowSize: 12))
+                .Append(_context.Transforms.Concatenate("NumericFeatures",
+                    nameof(BedAvailabilityData.EnhancedPredictionData.BedNumber),
+                    nameof(BedAvailabilityData.EnhancedPredictionData.StaffAvailable),
+                    nameof(BedAvailabilityData.EnhancedPredictionData.Age),
+                    nameof(BedAvailabilityData.EnhancedPredictionData.PredictedAvailableBeds),
+                    nameof(BedAvailabilityData.EnhancedPredictionData.PredictedOccupiedBeds)))
+                .Append(_context.Transforms.Categorical.OneHotEncoding(nameof(BedAvailabilityData.EnhancedPredictionData.BedType)))
+                .Append(_context.Transforms.Categorical.OneHotEncoding(nameof(BedAvailabilityData.EnhancedPredictionData.BedStatus)))
+                .Append(_context.Transforms.Categorical.OneHotEncoding(nameof(BedAvailabilityData.EnhancedPredictionData.HospitalName)))
+                .Append(_context.Transforms.Categorical.OneHotEncoding(nameof(BedAvailabilityData.EnhancedPredictionData.HospitalLocation)))
+                .Append(_context.Transforms.Categorical.OneHotEncoding(nameof(BedAvailabilityData.EnhancedPredictionData.Gender)))
+                .Append(_context.Transforms.Categorical.OneHotEncoding(nameof(BedAvailabilityData.EnhancedPredictionData.AdmissionStatus)))
+                .Append(_context.Transforms.Categorical.OneHotEncoding(nameof(BedAvailabilityData.EnhancedPredictionData.EmergencyType)))
+                .Append(_context.Transforms.Categorical.OneHotEncoding(nameof(BedAvailabilityData.EnhancedPredictionData.Season)))
+                .Append(_context.Transforms.Categorical.OneHotEncoding(nameof(BedAvailabilityData.EnhancedPredictionData.WeatherConditions)))
+                .Append(_context.Transforms.Categorical.OneHotEncoding(nameof(BedAvailabilityData.EnhancedPredictionData.DiseaseOutbreak)))
+                .Append(_context.Transforms.Concatenate("CategoricalFeatures",
+                    nameof(BedAvailabilityData.EnhancedPredictionData.BedType),
+                    nameof(BedAvailabilityData.EnhancedPredictionData.BedStatus),
+                    nameof(BedAvailabilityData.EnhancedPredictionData.HospitalName),
+                    nameof(BedAvailabilityData.EnhancedPredictionData.HospitalLocation),
+                    nameof(BedAvailabilityData.EnhancedPredictionData.Gender),
+                    nameof(BedAvailabilityData.EnhancedPredictionData.AdmissionStatus),
+                    nameof(BedAvailabilityData.EnhancedPredictionData.EmergencyType),
+                    nameof(BedAvailabilityData.EnhancedPredictionData.Season),
+                    nameof(BedAvailabilityData.EnhancedPredictionData.WeatherConditions),
+                    nameof(BedAvailabilityData.EnhancedPredictionData.DiseaseOutbreak)))
+                .Append(_context.Transforms.Concatenate("Features", "NumericFeatures", "CategoricalFeatures"))
+                .Append(_context.Transforms.NormalizeMinMax("Features")
+                .Append(_context.Transforms.NormalizeBinning("Features")));
 
-            // Define training pipeline
+
+            //Define Beds Availability and Occupied models
+            var availabilityPipeline = _context.Forecasting.ForecastBySsa(
+               outputColumnName: nameof(BedAvailabilityData.BedAvailability.ForecastedAvailableBeds),
+               inputColumnName: nameof(BedAvailabilityData.EnhancedPredictionData.PredictedAvailableBeds),
+               windowSize: 7,
+               seriesLength: 30,
+               trainSize: 100,
+               horizon: 7,
+               confidenceLevel: 0.95f,
+               confidenceLowerBoundColumn: nameof(BedAvailabilityData.BedAvailability.ForecastedMinimumAvailableBeds),
+               confidenceUpperBoundColumn: nameof(BedAvailabilityData.BedAvailability.ForecastedMaximumAvailableBeds)
+               );
+
+             var occupancyPipeline = _context.Forecasting.ForecastBySsa(
+               outputColumnName: nameof(BedAvailabilityData.BedAvailability.ForecastedOccupiedBeds),
+               inputColumnName: nameof(BedAvailabilityData.EnhancedPredictionData.PredictedAvailableBeds),
+               windowSize: 7,
+               seriesLength: 30,
+               trainSize: 100,
+               horizon: 7,
+               confidenceLevel: 0.95f,
+               confidenceLowerBoundColumn: nameof(BedAvailabilityData.BedAvailability.ForecastedMinimumOccupiedBeds),
+               confidenceUpperBoundColumn: nameof(BedAvailabilityData.BedAvailability.ForecastedMaximumOccupiedBeds)
+               );
+
+            // Combine pipelines
             var trainingPipeline = dataProcessPipeline
-                .Append(_context.Regression.Trainers.Sdca(labelColumnName: "PredictedAvailableBeds", maximumNumberOfIterations: 100));
+                .Append(availabilityPipeline)
+                .Append(occupancyPipeline);
+                //.Append(_context.Regression.Trainers.Sdca(labelColumnName: "PredictedAvailableBeds", maximumNumberOfIterations: 100));
 
             // Train the model
-            _model = trainingPipeline.Fit(data);
+            var model = trainingPipeline.Fit(data);
 
             // Evaluate the model
-            var predictions = _model.Transform(data);
-            var metrics = _context.Regression.Evaluate(predictions, labelColumnName: "PredictedAvailableBeds");
+            var predictions = model.Transform(data);
+            var metrics = _context.Regression.Evaluate(predictions, labelColumnName: nameof(BedAvailabilityData.BedAvailability.ForecastedAvailableBeds), nameof(BedAvailabilityData.BedAvailability.ForecastedAvailableBeds));
 
             Console.WriteLine($"R^2 Score: {metrics.RSquared}");
             Console.WriteLine($"Root Mean Squared Error: {metrics.RootMeanSquaredError}");
+            Console.WriteLine($"Mean Absolute Error: {metrics.MeanAbsoluteError}");
+            Console.WriteLine($"Mean Squared Error: { metrics.MeanSquaredError}");
+
+            _model = model;
 
             SaveModel();
         }
 
-        // Save the trained model
-        private void SaveModel()
+        // CreatePipeline
+        private object CreateTrainingPipeline(IDataView data)
         {
-            if (_model == null)
-                throw new InvalidOperationException("Model has not been trained yet.");
+            // Data processing pipeline
+            //var dataProcessPipeline = _context.Transforms.DetectSeasonality("Seasonality", "Value", seasonalityWindowSize: 12)
+            //    .Append(_context.Transforms.DetectTrend("Trend", "Value", trendWindowSize: 12))
+            //    .Append(_context.Transforms.DetectAnomalyBySrCnn("Anomaly", "Value", threshold: 0.3));
+            //_context.Transforms.Concatenate("NumericFeatures",
+            //        "HospitalID", "BedID", "BedNumber", "PatientID", "Age", "CaseID", "PredictedOccupiedBeds", "PredictionID")
+            //    //.Append(_context.Transforms.Conversion.MapValueToKey("BedType"))
+            //    //.Append(_context.Transforms.Conversion.MapValueToKey("BedStatus"))
+            //    //.Append(_context.Transforms.Conversion.MapValueToKey("HospitalName"))
+            //    //.Append(_context.Transforms.Conversion.MapValueToKey("HospitalLocation"))
+            //    //.Append(_context.Transforms.Conversion.MapValueToKey("Gender"))
+            //    //.Append(_context.Transforms.Conversion.MapValueToKey("AdmissionStatus"))
+            //    //.Append(_context.Transforms.Conversion.MapValueToKey("EmergencyType"))
+            //    //.Append(_context.Transforms.Concatenate("CategoricalFeatures", "BedType", "BedStatus", "HospitalName", "HospitalLocation", "Gender", "AdmissionStatus", "EmergencyType"))
+            //    .Append(_context.Transforms.Concatenate("Features", "NumericFeatures"))
+            //    .Append(_context.Transforms.NormalizeMinMax("Features"));
 
-            using var fileStream = new FileStream(_modelPath, FileMode.Create, FileAccess.Write, FileShare.Write);
-            _context.Model.Save(_model, null, fileStream);
+            //// Define training pipeline
+            //var trainingPipeline = dataProcessPipeline
+            //    .Append(_context.Regression.Trainers.Sdca(labelColumnName: "PredictedAvailableBeds", maximumNumberOfIterations: 100));
 
-            Console.WriteLine("Trained Model Saved successfully..");
+            //// Train the model
+            //_model = trainingPipeline.Fit(data);
+
+
+            // Data processing pipeline
+            var dataProcessPipeline = _context.Transforms.DetectAnomalyBySrCnn("Anomaly", "PredictedOccupiedBeds", threshold: 0.3)
+                //.Append(_context.Transforms.DetectTrend("Trend", "Value", trendWindowSize: 12))
+                .Append(_context.Transforms.Concatenate("NumericFeatures", "HospitalID", "BedID", "BedNumber", "PatientID", "Age", "CaseID", "PredictedOccupiedBeds", "PredictionID"))
+                .Append(_context.Transforms.Concatenate("CategoricalFeatures", "BedType", "BedStatus", "HospitalName", "HospitalLocation", "Gender", "AdmissionStatus", "EmergencyType"))
+                .Append(_context.Transforms.Concatenate("Features", "NumericFeatures", "CategoricalFeatures"))
+                .Append(_context.Transforms.NormalizeMinMax("Features"));
+
+            // Define STL and ARIMA models
+            //var stlPipeline = _context.Transforms.TimeSeries.SsaForecasting(
+            //    outputColumnName: "STLForecastedValue",
+            //    inputColumnName: "Value",
+            //    windowSize: 12,
+            //    seriesLength: 24,
+            //    trainSize: 48,
+            //    horizon: 12);
+
+            //var arimaPipeline = _context.Transforms.TimeSeries.SsaForecasting(
+            //    outputColumnName: "ARIMAForecastedValue",
+            //    inputColumnName: "Value",
+            //    windowSize: 12,
+            //    seriesLength: 24,
+            //    trainSize: 48,
+            //    horizon: 12);
+
+            // Combine pipelines
+            var trainingPipeline = dataProcessPipeline
+                //.Append(stlPipeline)
+                //.Append(arimaPipeline)
+                .Append(_context.Regression.Trainers.Sdca(labelColumnName: "PredictedAvailableBeds", maximumNumberOfIterations: 100));
+
+            return trainingPipeline;
         }
 
         // Load the trained model
@@ -133,12 +215,34 @@ namespace EBA.Forecasting.ServiceDefaults.Services
             }
         }
 
-        // Predict available beds using the trained model
-        public float PredictAvailableBeds(EnhancedPredictionData input)
+        // Save the trained model
+        private void SaveModel()
         {
-            var predictionFunction = _context.Model.CreatePredictionEngine<EnhancedPredictionData, Prediction>(_model);
-            var result = predictionFunction.Predict(input);
-            return result.PredictedAvailableBeds;
+            if (_model == null)
+                throw new InvalidOperationException("Model has not been trained yet.");
+
+            using var fileStream = new FileStream(_modelPath, FileMode.Create, FileAccess.Write, FileShare.Write);
+            _context.Model.Save(_model, null, fileStream);
+
+            Console.WriteLine("Trained Model Saved successfully..");
+        }
+
+        // Predict available beds using the trained model
+        public BedAvailabilityData PredictBedsAvailability(EnhancedPredictionData input)
+        {
+            // Create prediction engine
+            var forecastingEngine = _model.CreateTimeSeriesEngine<EnhancedPredictionData, BedAvailabilityForecast>(_context);
+
+            // Make predictions
+            var forecast = forecastingEngine.Predict(input);
+
+            // Output predictions
+            Console.WriteLine("Forecast");
+
+            return new BedAvailabilityData { EnhancedPredictionData = input, BedAvailability = forecast };
+            //var predictionFunction = _context.Model.CreatePredictionEngine<EnhancedPredictionData, Prediction>(_model);
+            //var result = predictionFunction.Predict(input);
+            //return result.PredictedAvailableBeds;
         }
     }
 }

@@ -19,6 +19,10 @@
     <PackageReference Include="Aspire.Hosting.AppHost" Version="8.0.0" />
     <PackageReference Include="Aspire.Hosting.Redis" Version="8.0.0" />
     <PackageReference Include="Aspire.Hosting.SqlServer" Version="8.1.0" />
+    <PackageReference Include="Microsoft.Extensions.ML" Version="3.0.1" />
+    <PackageReference Include="Microsoft.ML.AutoML" Version="0.21.1" />
+    <PackageReference Include="Microsoft.ML.Featurizers" Version="0.19.1" />
+    <PackageReference Include="Microsoft.ML.TimeSeries" Version="3.0.1" />
   </ItemGroup>
 
 </Project>
