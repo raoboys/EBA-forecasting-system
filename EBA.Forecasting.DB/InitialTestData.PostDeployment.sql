@@ -10,21 +10,20 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-
 -- Inserting Bulk Hospital Data
-INSERT INTO [dbo].[Hospitals] ([HospitalID], [Name], [Location])
+INSERT INTO [dbo].[Hospitals] ([dbo].[Hospitals].[HospitalID], [dbo].[Hospitals].[Name], [dbo].[Hospitals].[Location])
 VALUES 
-    (1, 'City Hospital', 'Downtown'),
-    (2, 'Westside Clinic', 'Westville'),
-    (3, 'Eastside Medical', 'Easttown'),
-    (4, 'Central Hospital', 'Midcity'),
-    (5, 'Northview Hospital', 'Northside'),
-    (6, 'Southtown Medical Center', 'Southside'),
-    (7, 'Riverdale Clinic', 'Riverside'),
-    (8, 'Hilltop Hospital', 'Hilltown');
+    (1, 'Max Super Specialty Hospital', 'New Delhi'),
+    (2, 'Apollo Hospital', 'Chennai'),
+    (3, 'Fortis Hospital', 'Bangalore'),
+    (4, 'Kokilaben Dhirubhai Ambani Hospital', 'Mumbai'),
+    (5, 'AIIMS', 'Delhi'),
+    (6, 'Narayana Health', 'Bangalore'),
+    (7, 'Medanta - The Medicity', 'Gurgaon'),
+    (8, 'Jaslok Hospital', 'Mumbai');
 
 -- Inserting Bulk Bed Data
-INSERT INTO [dbo].[Beds] ([BedID], [HospitalID], [BedNumber], [BedType], [Status])
+INSERT INTO [dbo].[Beds] ([dbo].[Beds].[BedID], [dbo].[Beds].[HospitalID], [dbo].[Beds].[BedNumber], [dbo].[Beds].[BedType], [dbo].[Beds].[Status])
 VALUES 
     (1, 1, 101, 'General', 'Available'),
     (2, 1, 102, 'ICU', 'Occupied'),
@@ -60,21 +59,21 @@ VALUES
     (32, 8, 804, 'ICU', 'Occupied');
 
 -- Inserting Bulk Patient Data
-INSERT INTO [dbo].[Patients] ([PatientID], [Name], [Age], [Gender], [AdmissionDate], [DischargeDate], [HospitalID], [BedID])
+INSERT INTO [dbo].[Patients] ([dbo].[Patients].[PatientID], [dbo].[Patients].[Name], [dbo].[Patients].[Age], [dbo].[Patients].[Gender], [dbo].[Patients].[AdmissionDate], [dbo].[Patients].[DischargeDate], [dbo].[Patients].[HospitalID], [dbo].[Patients].[BedID], [dbo].[Patients].[Season], [dbo].[Patients].[WeatherConditions], [dbo].[Patients].[DiseaseOutbreak])
 VALUES 
-    (1, 'John Doe', 45, 'M', '2024-08-15', NULL, 1, 2),
-    (2, 'Jane Smith', 34, 'F', '2024-08-16', NULL, 2, 4),
-    (3, 'Alice Johnson', 50, 'F', '2024-08-17', NULL, 3, 5),
-    (4, 'Bob Brown', 29, 'M', '2024-08-18', NULL, 4, 8),
-    (5, 'Charlie Davis', 60, 'M', '2024-08-20', NULL, 5, 12),
-    (6, 'Diana Evans', 40, 'F', '2024-08-21', NULL, 6, 16),
-    (7, 'Emily Clark', 55, 'F', '2024-08-22', NULL, 7, 20),
-    (8, 'Frank Green', 65, 'M', '2024-08-23', NULL, 8, 24),
-    (9, 'Grace Lee', 33, 'F', '2024-08-24', NULL, 1, 3),
-    (10, 'Henry Adams', 47, 'M', '2024-08-25', NULL, 2, 7);
+    (1, 'Arun Patel', 45, 'M', '2024-08-15', NULL, 1, 2, 'Summer', 'Clear', 'Covid-19'),
+    (2, 'Neha Sharma', 34, 'F', '2024-08-16', NULL, 2, 4, 'Winter', 'Rainy', 'None'),
+    (3, 'Anita Reddy', 50, 'F', '2024-08-17', NULL, 3, 5, 'Monsoon', 'Cloudy', 'Flu'),
+    (4, 'Rajesh Kumar', 29, 'M', '2024-08-18', NULL, 4, 8, 'Autumn', 'Stormy', 'None'),
+    (5, 'Suresh Gupta', 60, 'M', '2024-08-20', NULL, 5, 12, 'Summer', 'Sunny', 'Covid-19'),
+    (6, 'Pooja Singh', 40, 'F', '2024-08-21', NULL, 6, 16, 'Winter', 'Clear', 'None'),
+    (7, 'Amit Verma', 55, 'F', '2024-08-22', NULL, 7, 20, 'Monsoon', 'Foggy', 'None'),
+    (8, 'Ravi Iyer', 65, 'M', '2024-08-23', NULL, 8, 24, 'Autumn', 'Windy', 'Flu'),
+    (9, 'Sita Nair', 33, 'F', '2024-08-24', NULL, 1, 3, 'Summer', 'Clear', 'None'),
+    (10, 'Vikram Mehta', 47, 'M', '2024-08-25', NULL, 2, 7, 'Spring', 'Partly Cloudy', 'None');
 
 -- Inserting Bulk Prediction Data
-INSERT INTO [dbo].[Predictions] ([PredictionID], [HospitalID], [Date], [PredictedAvailableBeds], [PredictedOccupiedBeds])
+INSERT INTO [dbo].[Predictions] ([dbo].[Predictions].[PredictionID], [dbo].[Predictions].[HospitalID], [dbo].[Predictions].[Date], [dbo].[Predictions].[PredictedAvailableBeds], [dbo].[Predictions].[PredictedOccupiedBeds])
 VALUES 
     (1, 1, '2024-08-22', 5, 3),
     (2, 2, '2024-08-22', 7, 2),
@@ -88,7 +87,7 @@ VALUES
     (10, 2, '2024-08-23', 7, 3);
 
 -- Inserting Bulk Emergency Cases Data
-INSERT INTO [dbo].[EmergencyCases] ([CaseID], [PatientID], [HospitalID], [BedID], [AdmissionTime], [EmergencyType])
+INSERT INTO [dbo].[EmergencyCases] ([dbo].[EmergencyCases].[CaseID], [dbo].[EmergencyCases].[PatientID], [dbo].[EmergencyCases].[HospitalID], [dbo].[EmergencyCases].[BedID], [dbo].[EmergencyCases].[AdmissionTime], [dbo].[EmergencyCases].[EmergencyType])
 VALUES 
     (1, 2, 2, 4, '2024-08-21 14:00', 'Cardiac Arrest'),
     (2, 4, 4, 8, '2024-08-21 16:00', 'Stroke'),
@@ -98,25 +97,25 @@ VALUES
     (6, 8, 8, 24, '2024-08-22 14:00', 'Injury');
 
 -- Inserting Bulk System Logs Data
-INSERT INTO [dbo].[SystemLogs] ([LogID], [Timestamp], [EventType], [Description])
+INSERT INTO [dbo].[SystemLogs] ([dbo].[SystemLogs].[LogID], [dbo].[SystemLogs].[Timestamp], [dbo].[SystemLogs].[EventType], [dbo].[SystemLogs].[Description])
 VALUES 
-    (1, '2024-08-21 14:30:00', 'Login', 'User admin logged in.'),
-    (2, '2024-08-21 14:32:00', 'Data Update', 'Bed status updated for Hospital 1.'),
-    (3, '2024-08-21 14:45:00', 'Prediction', 'Bed availability prediction generated for Hospital 2.'),
-    (4, '2024-08-21 15:00:00', 'Error', 'Error accessing database for Bed 302.'),
-    (5, '2024-08-22 08:00:00', 'Login', 'User nurse_jane logged in.'),
-    (6, '2024-08-22 08:15:00', 'Data Update', 'Patient records updated for Hospital 3.'),
-    (7, '2024-08-22 08:30:00', 'Prediction', 'Bed availability prediction generated for Hospital 4.'),
-    (8, '2024-08-22 09:00:00', 'Error', 'Failed to connect to database.');
+    (1, '2024-08-21 14:30:00', 'Login', 'User Ajay Kumar logged in.'),
+    (2, '2024-08-21 14:32:00', 'Data Update', 'Bed status updated for Max Super Specialty Hospital.'),
+    (3, '2024-08-21 14:45:00', 'Prediction', 'Bed availability prediction generated for Apollo Hospital.'),
+    (4, '2024-08-21 15:00:00', 'Error', 'Error accessing database for Bed 302 at Fortis Hospital.'),
+    (5, '2024-08-22 08:00:00', 'Login', 'User Sita Sharma logged in.'),
+    (6, '2024-08-22 08:15:00', 'Data Update', 'Patient records updated for Kokilaben Dhirubhai Ambani Hospital.'),
+    (7, '2024-08-22 08:30:00', 'Prediction', 'Bed availability prediction generated for AIIMS.'),
+    (8, '2024-08-22 09:00:00', 'Error', 'Failed to connect to database for Narayana Health.');
 
 -- Inserting Bulk User Data
-INSERT INTO [dbo].[Users] ([UserID], [Username], [PasswordHash], [Role], [HospitalID])
+INSERT INTO [dbo].[Users] ([dbo].[Users].[UserID], [dbo].[Users].[Username], [dbo].[Users].[PasswordHash], [dbo].[Users].[Role], [dbo].[Users].[HospitalID], [dbo].[Users].[Available])
 VALUES 
-    (1, 'admin', '[hashed_pw]', 'Admin', NULL),
-    (2, 'nurse_jane', '[hashed_pw]', 'Nurse', 1),
-    (3, 'doctor_smith', '[hashed_pw]', 'Doctor', 2),
-    (4, 'admin_clark', '[hashed_pw]', 'Admin', NULL),
-    (5, 'nurse_lisa', '[hashed_pw]', 'Nurse', 3),
-    (6, 'doctor_brown', '[hashed_pw]', 'Doctor', 4),
-    (7, 'admin_jones', '[hashed_pw]', 'Admin', 5),
-    (8, 'nurse_lee', '[hashed_pw]', 'Nurse', 6);
+    (1, 'admin_ajay', '[hashed_pw]', 'Admin', NULL, 1),
+    (2, 'nurse_sita', '[hashed_pw]', 'Nurse', 1, 1),
+    (3, 'doctor_ravi', '[hashed_pw]', 'Doctor', 2, 1),
+    (4, 'admin_priya', '[hashed_pw]', 'Admin', NULL, 1),
+    (5, 'nurse_anita', '[hashed_pw]', 'Nurse', 3, 1),
+    (6, 'doctor_vikram', '[hashed_pw]', 'Doctor', 4, 1),
+    (7, 'admin_sunil', '[hashed_pw]', 'Admin', 5, 1),
+    (8, 'nurse_maya', '[hashed_pw]', 'Nurse', 6, 1);

@@ -1,9 +1,9 @@
-﻿using EBA.Forecasting.ServiceDefaults.Services.Models;
-using EBA.Forecasting.ServiceDefaults.Services;
+﻿using EBA.Forecasting.ServiceDefaults.Services;
+using EBA.Forecasting.ServiceDefaults.Services.Models;
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.ML;
+
+using Swashbuckle.AspNetCore.Filters;
 
 namespace EBA.Forecasting.ApiService.Controllers
 {
@@ -19,18 +19,19 @@ namespace EBA.Forecasting.ApiService.Controllers
         }
 
         [HttpPost("train")]
-        public IActionResult TrainModel(IEnumerable<EnhancedPredictionData> enhancedPredictions)
+        public IActionResult TrainModel()
         {
-            // For demonstration purposes, let's load data from a SQL database or another source.
-            // Here we use a placeholder to simulate loading data.
-            var data = _forecastingService.LoadTrainingData(enhancedPredictions); // Implement this method to fetch and convert your data into IDataView.
+            //  loading data for training the model.
+            var data = _forecastingService.LoadTrainingData();
 
             _forecastingService.TrainModel(data);
             return Ok("Model trained and saved successfully.");
         }
 
         [HttpPost("predict")]
-        public IActionResult Predict([FromBody] EnhancedPredictionData input)
+        [SwaggerRequestExample(typeof(BedAvailabilityParameters), typeof(BedAvailabilityParametersExample))]
+        [SwaggerResponseExample(200, typeof(BedAvailabilityExample))]
+        public IActionResult Predict([FromBody] BedAvailabilityParameters input)
         {
             if (input == null)
             {

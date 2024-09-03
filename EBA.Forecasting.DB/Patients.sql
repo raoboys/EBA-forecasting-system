@@ -8,6 +8,9 @@
     DischargeDate DATE NULL,
     HospitalID INT NOT NULL,
     BedID INT NOT NULL,
+    Season NVARCHAR(25) NOT NULL,
+    WeatherConditions NVARCHAR(25) NOT NULL,
+    DiseaseOutbreak NVARCHAR(25) NOT NULL,
     FOREIGN KEY (HospitalID) REFERENCES [dbo].[Hospitals](HospitalID),
     FOREIGN KEY (BedID) REFERENCES [dbo].[Beds](BedID)
 );

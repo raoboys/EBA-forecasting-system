@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EBA.Forecasting.ServiceDefaults.Services.ForecastingService">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEEABAAAAgAYAAAAAAAAIAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Services\ForecastingService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EBA.Forecasting.ServiceDefaults.Services.Models.BedAvailabilityData">
+    <Position X="2.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAECAACAAYCgAECACWAACIQCAAQEAAAgAAgAABAgAAA=</HashCode>
+      <FileName>Services\Models\BedAvailability.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EBA.Forecasting.ServiceDefaults.Services.Models.Forecast">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAQAQAAAAAABAQABAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Models\BedAvailability.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EBA.Forecasting.ServiceDefaults.Services.Models.BedAvailability">
+    <Position X="4.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Models\BedAvailabilityParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EBA.Forecasting.ServiceDefaults.Services.Models.BedAvailabilityParameters">
+    <Position X="4.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAACAAQCgAECAAWAIAAQCEAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Services\Models\BedAvailabilityParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EBA.Forecasting.ServiceDefaults.Services.Models.BedAvailabilityParametersExample" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Services\Models\BedAvailabilityParameters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EBA.Forecasting.ServiceDefaults.Services.Models.BedAvailabilityExample" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Services\Models\BedAvailabilityParameters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,89 +1,8 @@
 ﻿using Microsoft.ML.Data;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace EBA.Forecasting.ServiceDefaults.Services.Models
 {
-    //public class EnhancedPredictionData
-    //{
-    //    [LoadColumn(0), ColumnName("")]
-    //    public int PredictionID { get; set; }
-
-    //    [LoadColumn(1)]
-    //    public int HospitalID { get; set; }
-
-    //    [LoadColumn(17)]
-    //    public int CaseID { get; set; }
-
-    //    [LoadColumn(5)]
-    //    public int BedID { get; set; }
-
-    //    [LoadColumn(11)]
-    //    public int PatientID { get; set; }
-
-    //    [LoadColumn(6)]
-    //    public int BedNumber { get; set; }
-
-    //    [LoadColumn(12), ColumnName("Age")]
-    //    public int Age { get; set; }
-
-    //    [LoadColumn(13)]
-    //    public string Gender { get; set; }
-
-    //    [LoadColumn(2)]
-    //    public DateTime PredictionDate { get; set; }
-
-    //    [LoadColumn(3)]
-    //    public Single PredictedAvailableBeds { get; set; }
-
-    //    [LoadColumn(4)]
-    //    public Single PredictedOccupiedBeds { get; set; }
-
-    //    [LoadColumn(7)]
-    //    public string BedType { get; set; }
-
-    //    [LoadColumn(8)]
-    //    public string BedStatus { get; set; }
-
-    //    [LoadColumn(9)]
-    //    public string HospitalName { get; set; }
-
-    //    [LoadColumn(10)]
-    //    public string HospitalLocation { get; set; }
-
-    //    [LoadColumn(14)]
-    //    public DateTime AdmissionDate { get; set; }
-
-    //    [LoadColumn(15)]
-    //    public string AdmissionStatus { get; set; }
-
-    //    [LoadColumn(16)]
-    //    public DateTime DischargeDate { get; set; }
-
-    //    [LoadColumn(18)]
-    //    public string EmergencyType { get; set; }
-
-    //    [LoadColumn(19), ColumnName("EmergencyAdmissionTime")]
-    //    public DateTime EmergencyAdmissionTime { get; set; }
-
-    //    [LoadColumn(23), ColumnName("StaffAvailable")]
-    //    public float StaffAvailable { get; set; }
-
-    //    [LoadColumn(20), ColumnName("Season")]
-    //    public string Season { get; set; }
-
-    //    [LoadColumn(21), ColumnName("WeatherConditions")]
-    //    public string WeatherConditions { get; set; }
-
-    //    [LoadColumn(22), ColumnName("DiseaseOutbreak")]
-    //    public string DiseaseOutbreak { get; set; }
-    //}
-
-    public class EnhancedPredictionData
+    public class BedAvailabilityData
     {
         [LoadColumn(0), ColumnName("PredictionID")]
         public int PredictionID { get; set; }
@@ -156,11 +75,37 @@ namespace EBA.Forecasting.ServiceDefaults.Services.Models
 
         [LoadColumn(23), ColumnName("StaffAvailable")]
         public float StaffAvailable { get; set; }
+
+        public static BedAvailabilityData MapToData(BedAvailabilityParameters parameters)
+        {
+            return new BedAvailabilityData
+            {
+                BedNumber = parameters.BedNumber,
+                StaffAvailable = parameters.StaffAvailable,
+                Age = parameters.Age,
+                PredictedAvailableBeds = parameters.AvailableBeds,
+                PredictedOccupiedBeds = parameters.OccupiedBeds,
+                BedType = parameters.BedType,
+                BedStatus = parameters.BedStatus,
+                HospitalName = parameters.HospitalName,
+                HospitalLocation = parameters.HospitalLocation,
+                Gender = parameters.Gender,
+                AdmissionStatus = parameters.AdmissionStatus,
+                EmergencyType = parameters.EmergencyType,
+                Season = parameters.Season,
+                WeatherConditions = parameters.WeatherConditions,
+                DiseaseOutbreak = parameters.DiseaseOutbreak
+            };
+        }
     }
 
 
-    public class BedAvailabilityForecast
+    public class Forecast
     {
+        [VectorType(3)]
+        [ColumnName("BedAvailabilityAnamolyPrediction")]
+        public VBuffer<double> BedAvailabilityAnamolyPrediction { get; set; }
+
         [ColumnName("ForecastedAvailableBeds")]
         public float[] ForecastedAvailableBeds { get; set; } = Array.Empty<float>();
 
@@ -178,12 +123,5 @@ namespace EBA.Forecasting.ServiceDefaults.Services.Models
 
         [ColumnName("ForecastedMaximumOccupiedBeds")]
         public float[] ForecastedMaximumOccupiedBeds { get; set; } = Array.Empty<float>();
-    }
-
-    public class BedAvailabilityData
-    {
-        public EnhancedPredictionData? EnhancedPredictionData { get; set; } 
-
-        public BedAvailabilityForecast? BedAvailability { get; set; }
     }
 }

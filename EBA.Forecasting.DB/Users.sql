@@ -4,5 +4,6 @@
     PasswordHash NVARCHAR(MAX) NOT NULL,
     Role NVARCHAR(50) NOT NULL,
     HospitalID INT,
+    Available BIT,
     FOREIGN KEY (HospitalID) REFERENCES [dbo].[Hospitals](HospitalID)
 );

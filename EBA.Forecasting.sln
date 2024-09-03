@@ -8,8 +8,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EBA.Forecasting.ServiceDefa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EBA.Forecasting.ApiService", "EBA.Forecasting.ApiService\EBA.Forecasting.ApiService.csproj", "{D968CFDB-FDAA-4CEE-8471-C4DB0D4D4B04}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EBA.Forecasting.Web", "EBA.Forecasting.Web\EBA.Forecasting.Web.csproj", "{760C0899-8388-4F94-93F0-9F93ECEEA95D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EBA.Forecasting.Tests", "EBA.Forecasting.Tests\EBA.Forecasting.Tests.csproj", "{D041C325-3A68-4A30-97D2-7ECBB9310E92}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "EBA.Forecasting.DB", "EBA.Forecasting.DB\EBA.Forecasting.DB.sqlproj", "{BD6F00D0-FB88-4979-A105-28DB93BA118A}"
@@ -32,10 +30,6 @@ Global
 		{D968CFDB-FDAA-4CEE-8471-C4DB0D4D4B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D968CFDB-FDAA-4CEE-8471-C4DB0D4D4B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D968CFDB-FDAA-4CEE-8471-C4DB0D4D4B04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{760C0899-8388-4F94-93F0-9F93ECEEA95D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{760C0899-8388-4F94-93F0-9F93ECEEA95D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{760C0899-8388-4F94-93F0-9F93ECEEA95D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{760C0899-8388-4F94-93F0-9F93ECEEA95D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D041C325-3A68-4A30-97D2-7ECBB9310E92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D041C325-3A68-4A30-97D2-7ECBB9310E92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D041C325-3A68-4A30-97D2-7ECBB9310E92}.Release|Any CPU.ActiveCfg = Release|Any CPU

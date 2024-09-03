@@ -74,9 +74,6 @@
     <Build Include="UpdatePatientStatus.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="InitialBulkTestData.PostDeployment.sql" />
-  </ItemGroup>
-  <ItemGroup>
     <PostDeploy Include="InitialTestData.PostDeployment.sql" />
   </ItemGroup>
 </Project>

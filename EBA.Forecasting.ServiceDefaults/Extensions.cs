@@ -7,10 +7,13 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.ML;
+using Microsoft.OpenApi.Models;
 
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
+
+using Swashbuckle.AspNetCore.Filters;
 
 namespace EBA.Forecasting.ServiceDefaults;
 
@@ -37,10 +40,13 @@ public static class Extensions
         });
         // Add Swagger
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "EBA API", Version = "v1" });
+            c.ExampleFilters(); // Add this line if you are using examples
+        });
 
-        // Add Forecasting Servivce
-        builder.Services.AddSingleton<MLContext>();
+        // Add Forecasting Service
         builder.Services.AddSingleton<ForecastingService>();
 
         return builder;
@@ -109,7 +115,11 @@ public static class Extensions
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("../swagger/v1/swagger.json", "EBA API v1");
+            });
+
             // All health checks must pass for app to be considered ready to accept traffic after starting
             app.MapHealthChecks("/health");
 

@@ -12,17 +12,18 @@
   <ItemGroup>
     <ProjectReference Include="..\EBA.Forecasting.ApiService\EBA.Forecasting.ApiService.csproj" />
     <ProjectReference Include="..\EBA.Forecasting.ServiceDefaults\EBA.Forecasting.ServiceDefaults.csproj" />
-    <ProjectReference Include="..\EBA.Forecasting.Web\EBA.Forecasting.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.0.0" />
-    <PackageReference Include="Aspire.Hosting.Redis" Version="8.0.0" />
-    <PackageReference Include="Aspire.Hosting.SqlServer" Version="8.1.0" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.Redis" Version="8.2.0" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="8.2.0" />
     <PackageReference Include="Microsoft.Extensions.ML" Version="3.0.1" />
     <PackageReference Include="Microsoft.ML.AutoML" Version="0.21.1" />
     <PackageReference Include="Microsoft.ML.Featurizers" Version="0.19.1" />
     <PackageReference Include="Microsoft.ML.TimeSeries" Version="3.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.2" />
   </ItemGroup>
 
 </Project>

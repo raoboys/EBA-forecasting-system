@@ -5,17 +5,59 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Argentina.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Australia.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Austria.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Belarus.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Belgium.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Brazil.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Canada.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Colombia.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Croatia.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Czech.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Denmark.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\England.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Finland.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\France.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Germany.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Hungary.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\India.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Ireland.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Isle of Man.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Italy.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Japan.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Mexico.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Netherlands.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\New Zealand.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Northern Ireland.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Norway.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Poland.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Portugal.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Scotland.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Slovenia.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\South Africa.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Spain.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Sweden.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Switzerland.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Ukraine.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\United Kingdom.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\United States.json" />
+    <None Remove="C:\Users\raoyo\.nuget\packages\microsoft.mlfeaturizers\0.4.1\contentFiles\any\any\Data\DateTimeFeaturizer\Wales.json" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.ML" Version="3.0.1" />
     <PackageReference Include="Microsoft.ML.AutoML" Version="0.21.1" />
     <PackageReference Include="Microsoft.ML.Featurizers" Version="0.19.1" />
     <PackageReference Include="Microsoft.ML.TimeSeries" Version="3.0.1" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EBA.Forecasting.ServiceDefaults\EBA.Forecasting.ServiceDefaults.csproj" />
   </ItemGroup>
-  <ItemGroup Label="EBA-Model">
-    <None Include="EBA-Model.mlnet">
+  <ItemGroup>
+    <None Update=".mlnet">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

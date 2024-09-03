@@ -1,4 +1,4 @@
-﻿CREATE VIEW [dbo].[EnhancedPredictionData] AS
+﻿CREATE VIEW [dbo].[BedAvailabilityData] AS
 SELECT
     CAST(p.PredictionID As Real) As PredictionID,
     CAST(p.HospitalID As Real) As HospitalID,
@@ -12,14 +12,18 @@ SELECT
     h.Name AS HospitalName,
     h.Location AS HospitalLocation,
     CAST(pa.PatientID As Real) As PatientID,
-    CAST(pa.Age As Real) As Age,
+    CAST(pa.Age As Real) As Age, 
     pa.Gender,
     pa.AdmissionDate,
     pa.AdmissionStatus,
     pa.DischargeDate,
-   CAST( ec.CaseID As Real) As CaseID,
+    CAST( ec.CaseID As Real) As CaseID,
     ec.EmergencyType,
-    ec.AdmissionTime AS EmergencyAdmissionTime
+    ec.AdmissionTime AS EmergencyAdmissionTime,    
+    pa.Season As Season,
+    pa.WeatherConditions As WeatherConditions,
+    pa.DiseaseOutbreak As DiseaseOutbreak,
+    CAST((SELECT COUNT(*) As StaffAvailable  from [dbo].[Users] u where u.HospitalID = [u].[HospitalID] and u.Available = 'true') As REAL) As StaffAvailable
 FROM
     [dbo].[Predictions] p
     INNER JOIN [dbo].[Beds] b ON p.HospitalID= b.HospitalID
